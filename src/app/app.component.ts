@@ -36,7 +36,7 @@ export class AppComponent implements OnInit {
 
   }
 
-  autoIncrement(val: number) : void {
+  autoIncrement(val: number): void {
     this.increment = val;
   }
 
