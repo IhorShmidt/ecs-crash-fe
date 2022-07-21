@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ecs-crash-fe"
+    }
+  },
+  "defaultProject": "ecs-crash-fe",
+  "cli": {
+    "analytics": false
+  }
 }
