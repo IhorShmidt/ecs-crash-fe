@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   form;
 
   intervals = [];
+  increment = 0;
 
   constructor(private http: HttpClient) {
   }
@@ -35,6 +36,10 @@ export class AppComponent implements OnInit {
 
   }
 
+  autoIncrement(val: number) : void {
+    this.increment = val;
+  }
+
   stopHittingServer(): void {
     this.intervals.forEach(interval => {
       clearInterval(interval);
@@ -42,13 +47,14 @@ export class AppComponent implements OnInit {
   }
 
   sendValueRequest(): void {
-
     const value = this.form.get('value').value;
-    this.http.get(`${environment.api}/value?value=${value}`).subscribe((data: { value: number }) => {
-        console.log(data);
-        this.form.get('value').setValue(++data.value);
+    console.log('Sent', value);
+    this.http.get(`${environment.api}/value?value=${+value + +this.increment}`).subscribe((data: { value: number }) => {
+        console.log('Received', data.value);
+        this.form.get('value').setValue(data.value);
       }
       , error => {
+        console.log('Received ERROR:', error);
         console.log(error);
       }
     );

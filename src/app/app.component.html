@@ -24,6 +24,14 @@
   >Start hitting server
   </button>
   <button
+    (click)="autoIncrement(1)"
+  >Increment
+  </button>
+  <button
+    (click)="autoIncrement(0)"
+  >Sop increment
+  </button>
+  <button
     (click)="stopHittingServer()"
   >Stop hitting server
   </button>
