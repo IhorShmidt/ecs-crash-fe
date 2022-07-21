@@ -61,6 +61,19 @@ export class AppComponent implements OnInit {
 
   }
 
+  ofUndefined(): void {
+    console.log('Sending of undefined');
+    this.http.get(`${environment.api}/of`).subscribe((data: { value: number }) => {
+        console.log('Of undefined');
+      }
+      , error => {
+        console.log('Of undefined');
+        console.log(error);
+      }
+    );
+
+  }
+
   sendCrashRequest(): void {
     this.http.get(`${environment.api}/crash`).subscribe(data => {
         console.log(data);
